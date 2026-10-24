@@ -52,6 +52,13 @@
            </widget>
           </item>
           <item>
+           <widget class="QCheckBox" name="repeat_playlist_check">
+            <property name="text">
+             <string>Repeat playlist</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QCheckBox" name="ignore_errors_check">
             <property name="text">
              <string>Ig&amp;nore playback errors</string>
@@ -237,6 +244,7 @@
   <tabstop>play_from_start_check</tabstop>
   <tabstop>play_on_load_check</tabstop>
   <tabstop>play_next_automatically_check</tabstop>
+  <tabstop>repeat_playlist_check</tabstop>
   <tabstop>ignore_errors_check</tabstop>
   <tabstop>auto_add_to_playlist_check</tabstop>
   <tabstop>media_to_add_combo</tabstop>

@@ -60,6 +60,9 @@ public:
 	void setPlayNextAutomatically(bool b);
 	bool playNextAutomatically();
 
+	void setRepeatPlaylist(bool b);
+	bool repeatPlaylist();
+
 	void setIgnorePlayerErrors(bool b);
 	bool ignorePlayerErrors();
 

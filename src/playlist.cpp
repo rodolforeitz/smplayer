@@ -314,6 +314,7 @@ Playlist::Playlist(QWidget * parent, Qt::WindowFlags f)
 	, row_spacing(-1) // Default height
 	, start_play_on_load(true)
 	, automatically_play_next(true)
+	, repeat_playlist(false)
 	, ignore_player_errors(false)
 	, change_name(true)
 	, save_dirs(true)
@@ -1728,7 +1729,13 @@ void Playlist::playPrev() {
 void Playlist::playNextAuto() {
 	qDebug("Playlist::playNextAuto");
 	if (automatically_play_next) {
-		playNext();
+		int current = findCurrentItem();
+		if (repeat_playlist && current >= 0 && current + 1 >= proxy->rowCount()) {
+			clearPlayedTag();
+			playItem(0);
+		} else {
+			playNext();
+		}
 	} else {
 		emit playlistEnded();
 	}
@@ -2344,7 +2351,13 @@ void Playlist::playerFailed(QProcess::ProcessError e) {
 void Playlist::playerFinishedWithError(int e) {
 	qDebug("Playlist::playerFinishedWithError: %d", e);
 	if (ignore_player_errors) {
-		playNext();
+		int current = findCurrentItem();
+		if (repeat_playlist && current >= 0 && current + 1 >= proxy->rowCount()) {
+			clearPlayedTag();
+			playItem(0);
+		} else {
+			playNext();
+		}
 	}
 }
 
@@ -2369,6 +2382,7 @@ void Playlist::saveSettings() {
 	set->setValue( "play_files_from_start", play_files_from_start );
 	set->setValue( "start_play_on_load", start_play_on_load );
 	set->setValue( "automatically_play_next", automatically_play_next );
+	set->setValue( "repeat_playlist", repeat_playlist );
 	set->setValue( "ignore_player_errors", ignore_player_errors );
 	set->setValue( "change_name", change_name );
 
@@ -2462,6 +2476,7 @@ void Playlist::loadSettings() {
 	play_files_from_start = set->value( "play_files_from_start", play_files_from_start ).toBool();
 	start_play_on_load = set->value( "start_play_on_load", start_play_on_load ).toBool();
 	automatically_play_next = set->value( "automatically_play_next", automatically_play_next ).toBool();
+	repeat_playlist = set->value( "repeat_playlist", repeat_playlist ).toBool();
 	ignore_player_errors = set->value( "ignore_player_errors", ignore_player_errors ).toBool();
 	change_name = set->value( "change_name", change_name ).toBool();
 

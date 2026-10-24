@@ -3221,6 +3221,7 @@ void BaseGui::showPreferencesDialog() {
 	pl->setPlayFilesFromStart(playlist->playFilesFromStart());
 	pl->setPlayOnLoad(playlist->startPlayOnLoad());
 	pl->setPlayNextAutomatically(playlist->automaticallyPlayNext());
+	pl->setRepeatPlaylist(playlist->repeatPlaylist());
 	pl->setIgnorePlayerErrors(playlist->ignorePlayerErrors());
 	pl->setAutoSort(playlist->autoSort());
 	pl->setFilterCaseSensitive(playlist->filterCaseSensitive());
@@ -3317,6 +3318,7 @@ void BaseGui::applyNewPreferences() {
 	playlist->setPlayFilesFromStart(pl->playFilesFromStart());
 	playlist->setStartPlayOnLoad(pl->playOnLoad());
 	playlist->setAutomaticallyPlayNext(pl->playNextAutomatically());
+	playlist->setRepeatPlaylist(pl->repeatPlaylist());
 	playlist->setIgnorePlayerErrors(pl->ignorePlayerErrors());
 	playlist->setAutoSort(pl->autoSort());
 	playlist->setFilterCaseSensitive(pl->filterCaseSensitive());

@@ -144,6 +144,14 @@ bool PrefPlaylist::playNextAutomatically() {
 	return play_next_automatically_check->isChecked();
 }
 
+void PrefPlaylist::setRepeatPlaylist(bool b) {
+	repeat_playlist_check->setChecked(b);
+}
+
+bool PrefPlaylist::repeatPlaylist() {
+	return repeat_playlist_check->isChecked();
+}
+
 void PrefPlaylist::setIgnorePlayerErrors(bool b) {
 	ignore_errors_check->setChecked(b);
 }
@@ -199,6 +207,9 @@ void PrefPlaylist::createHelp() {
 
 	setWhatsThis(play_next_automatically_check, tr("Play next file automatically"),
 		tr("When a file reaches the end, the next file will be played automatically.") );
+
+	setWhatsThis(repeat_playlist_check, tr("Repeat playlist"),
+		tr("When the last file reaches the end, playback will continue from the first file in the playlist.") );
 
 	setWhatsThis(ignore_errors_check, tr("Ignore playback errors"),
 		tr("If this option is enabled, the playlist will ignore playback errors from a previous file "

@@ -207,6 +207,7 @@ public:
 	void setIgnorePlayerErrors(bool b) { ignore_player_errors = b; };
 	void setStartPlayOnLoad(bool b) { start_play_on_load = b; };
 	void setAutomaticallyPlayNext(bool b) { automatically_play_next = b; };
+	void setRepeatPlaylist(bool b) { repeat_playlist = b; };
 	void setAutoSort(bool b);
 	void setSortCaseSensitive(bool b);
 	void setFilterCaseSensitive(bool b);
@@ -219,6 +220,7 @@ public:
 	bool ignorePlayerErrors() { return ignore_player_errors; };
 	bool startPlayOnLoad() { return start_play_on_load; };
 	bool automaticallyPlayNext() { return automatically_play_next; };
+	bool repeatPlaylist() { return repeat_playlist; };
 	bool autoSort();
 	bool sortCaseSensitive();
 	bool filterCaseSensitive();
@@ -428,6 +430,7 @@ private:
 
 	bool start_play_on_load;
 	bool automatically_play_next;
+	bool repeat_playlist;
 	bool ignore_player_errors;
 	bool change_name;
 	bool save_dirs;
