@@ -54,6 +54,9 @@ public:
 	void setPlayFilesFromStart(bool b);
 	bool playFilesFromStart();
 
+	void setRememberPosition(bool b);
+	bool rememberPosition();
+
 	void setPlayOnLoad(bool b);
 	bool playOnLoad();
 

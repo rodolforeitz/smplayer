@@ -45,6 +45,13 @@
            </widget>
           </item>
           <item>
+           <widget class="QCheckBox" name="remember_position_check">
+            <property name="text">
+             <string>Remember playlist position</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QCheckBox" name="play_next_automatically_check">
             <property name="text">
              <string>Pla&amp;y next file automatically</string>

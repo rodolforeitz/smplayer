@@ -311,6 +311,7 @@ Playlist::Playlist(QWidget * parent, Qt::WindowFlags f)
 	, automatically_get_info(false)
 	, save_playlist_in_config(true)
 	, play_files_from_start(true)
+	, remember_position(true)
 	, row_spacing(-1) // Default height
 	, start_play_on_load(true)
 	, automatically_play_next(true)
@@ -1634,7 +1635,7 @@ void Playlist::showPopup(const QPoint & pos) {
 }
 
 void Playlist::startPlay() {
-	playItem(loadPosition());
+	playItem(remember_position ? loadPosition() : 0);
 }
 
 void Playlist::playItem(int n, bool later) {
@@ -2380,6 +2381,7 @@ void Playlist::saveSettings() {
 	set->setValue( "recursive_add_directory", recursive_add_directory );
 	set->setValue( "save_playlist_in_config", save_playlist_in_config );
 	set->setValue( "play_files_from_start", play_files_from_start );
+	set->setValue( "remember_position", remember_position );
 	set->setValue( "start_play_on_load", start_play_on_load );
 	set->setValue( "automatically_play_next", automatically_play_next );
 	set->setValue( "repeat_playlist", repeat_playlist );
@@ -2474,6 +2476,7 @@ void Playlist::loadSettings() {
 	recursive_add_directory = set->value( "recursive_add_directory", recursive_add_directory ).toBool();
 	save_playlist_in_config = set->value( "save_playlist_in_config", save_playlist_in_config ).toBool();
 	play_files_from_start = set->value( "play_files_from_start", play_files_from_start ).toBool();
+	remember_position = set->value( "remember_position", true ).toBool();
 	start_play_on_load = set->value( "start_play_on_load", start_play_on_load ).toBool();
 	automatically_play_next = set->value( "automatically_play_next", automatically_play_next ).toBool();
 	repeat_playlist = set->value( "repeat_playlist", repeat_playlist ).toBool();
@@ -2728,7 +2731,7 @@ void Playlist::resort() {
 
 void Playlist::savePosition() {
 	qDebug() << "Playlist::savePosition:" << playlist_filename;
-	if (set && !playlist_filename.isEmpty() && !isEmpty()) {
+	if (remember_position && set && !playlist_filename.isEmpty() && !isEmpty()) {
 		QString key = playlist_filename.toUtf8().toBase64();
 		int current_position = findCurrentItem();
 		qDebug() << "Playlist::savePosition: key:" << key << "position:" << current_position;

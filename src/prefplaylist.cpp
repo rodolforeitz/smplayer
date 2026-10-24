@@ -128,6 +128,14 @@ bool PrefPlaylist::playFilesFromStart() {
 	return play_from_start_check->isChecked();
 }
 
+void PrefPlaylist::setRememberPosition(bool b) {
+	 remember_position_check->setChecked(b);
+}
+
+bool PrefPlaylist::rememberPosition() {
+	return remember_position_check->isChecked();
+}
+
 void PrefPlaylist::setPlayOnLoad(bool b) {
 	play_on_load_check->setChecked(b);
 }
@@ -204,6 +212,9 @@ void PrefPlaylist::createHelp() {
 
 	setWhatsThis(play_on_load_check, tr("Start playback after loading a playlist"),
 		tr("Playback will start just after loading a playlist.") );
+
+	setWhatsThis(remember_position_check, tr("Remember playlist position"),
+		tr("When enabled, SMPlayer will resume a playlist from the item that was playing when it was last closed.") );
 
 	setWhatsThis(play_next_automatically_check, tr("Play next file automatically"),
 		tr("When a file reaches the end, the next file will be played automatically.") );

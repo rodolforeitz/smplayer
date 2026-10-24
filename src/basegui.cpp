@@ -3219,6 +3219,7 @@ void BaseGui::showPreferencesDialog() {
 	pl->setAutoGetInfo(playlist->autoGetInfo());
 	pl->setSavePlaylistOnExit(playlist->savePlaylistOnExit());
 	pl->setPlayFilesFromStart(playlist->playFilesFromStart());
+	pl->setRememberPosition(playlist->rememberPosition());
 	pl->setPlayOnLoad(playlist->startPlayOnLoad());
 	pl->setPlayNextAutomatically(playlist->automaticallyPlayNext());
 	pl->setRepeatPlaylist(playlist->repeatPlaylist());
@@ -3316,6 +3317,7 @@ void BaseGui::applyNewPreferences() {
 	playlist->setAutoGetInfo(pl->autoGetInfo());
 	playlist->setSavePlaylistOnExit(pl->savePlaylistOnExit());
 	playlist->setPlayFilesFromStart(pl->playFilesFromStart());
+	playlist->setRememberPosition(pl->rememberPosition());
 	playlist->setStartPlayOnLoad(pl->playOnLoad());
 	playlist->setAutomaticallyPlayNext(pl->playNextAutomatically());
 	playlist->setRepeatPlaylist(pl->repeatPlaylist());
